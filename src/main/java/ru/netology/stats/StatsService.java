@@ -1,7 +1,9 @@
+package ru.netology.stats;
+
 public class StatsService {
 
     //Сумму всех продаж.
-    public int sumSales(int[] sales) {
+    public long sumSales(long[] sales) {
         long sumSales = 0;
         for (long i : sales) {
             sumSales = sumSales + i;
@@ -10,12 +12,8 @@ public class StatsService {
     }
 
     //Среднюю сумму продаж в месяц.
-    public long averageSumSales(int[] sales) {
-        long averagesumSales = 0;
-        for (long i : sales) {
-            averagesumSales = averagesumSales + i;
-        }
-        return averagesumSales / 12;
+    public long averageSumSales(long[] sales) {
+        return sumSales(sales) / sales.length;
     }
 
     //Номер месяца, в котором был пик продаж, то есть осуществлены продажи на максимальную сумму*
@@ -42,26 +40,26 @@ public class StatsService {
     }
 
     //Количество месяцев, в которых продажи были ниже среднего (см. п.2).
-    public int minSalesAverge(int[] sales) {
+    public long minSalesAverge(long[] sales) {
         int minSalesAverge = 0;
-        long averagesumSales = averageSumSales (sales);
-                    for (int t = 0; t < sales.length; t++) {
-                if (sales[t] < averagesumSales) {
-                    minSalesAverge = minSalesAverge + 1;
-                }
+        long averagesumSales = averageSumSales(sales);
+        for (int t = 0; t < sales.length; t++) {
+            if (sales[t] < averagesumSales) {
+                minSalesAverge = minSalesAverge + 1;
             }
+        }
         return minSalesAverge;
     }
 
     //Количество месяцев, в которых продажи были выше среднего (см. п.2).
-    public int maxSalesAverge(int[] sales) {
+    public long maxSalesAverge(long[] sales) {
         int maxSalesAverge = 0;
-        long averagesumSales = averageSumSales (sales);
-            for (int m = 0; m < sales.length; m++) {
-                if (sales[m] < averagesumSales) {
-                    maxSalesAverge = maxSalesAverge + 1;
-                }
+        long averagesumSales = averageSumSales(sales);
+        for (int m = 0; m < sales.length; m++) {
+            if (sales[m] < averagesumSales) {
+                maxSalesAverge = maxSalesAverge + 1;
             }
-       return maxSalesAverge;
+        }
+        return maxSalesAverge;
     }
 }
