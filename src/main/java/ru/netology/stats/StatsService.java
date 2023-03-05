@@ -56,7 +56,7 @@ public class StatsService {
         int maxSalesAverge = 0;
         long averagesumSales = averageSumSales(sales);
         for (int m = 0; m < sales.length; m++) {
-            if (sales[m] < averagesumSales) {
+            if (sales[m] > averagesumSales) {
                 maxSalesAverge = maxSalesAverge + 1;
             }
         }
